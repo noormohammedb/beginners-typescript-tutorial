@@ -10,11 +10,19 @@ interface Post {
   body: string;
 }
 
+// interface Combined extends User, Post { } ;
+
+// type Combined = User & Post;
+
+interface Combined extends User {
+  posts: Post[];
+}
+
 /**
  * How do we type this return statement so it's both
  * User AND { posts: Post[] }
  */
-export const getDefaultUserAndPosts = (): unknown => {
+export const getDefaultUserAndPosts = (): Combined => {
   return {
     id: "1",
     firstName: "Matt",
