@@ -11,6 +11,11 @@ interface User {
  * firstName and lastName properties of User?
  */
 
-type MyType = unknown;
+type MyType = Pick<User, "firstName" | "lastName">;
+// type MyType = {User["firstName"] + User["lastName"]}
+
+const test: MyType = { firstName: "foo", lastName: "b" };
+
+console.log(typeof test);
 
 type tests = [Expect<Equal<MyType, { firstName: string; lastName: string }>>];
